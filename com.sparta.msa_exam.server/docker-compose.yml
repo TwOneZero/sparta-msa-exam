@@ -1,0 +1,16 @@
+services:
+  redis-stack:
+    image: redis/redis-stack
+    container_name: redis-stack-exam
+    restart: always
+    environment:
+      REDIS_ARGS: "--requirepass systempass"
+    ports:
+      - 6379:6379
+      - 8001:8001
+  openZipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin-exam
+    restart: always
+    ports:
+      - 9411:9411
