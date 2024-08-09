@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: auth-service
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:19090/eureka/
+
+service:
+  jwt:
+    access-expiration: 3600000
+    secret-key: "5905e1c15736e1526f9715a679bd4c9674533ed74324efd3478da4060550b8ca5154495e089e6f49fa064d98f22f880fdb59b7716e946254805f61f7f05e0c24"
+
+server:
+  port: 19095

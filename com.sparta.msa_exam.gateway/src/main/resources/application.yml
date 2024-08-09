@@ -1,0 +1,39 @@
+server:
+  port: 19091
+
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: gateway-service
+  jackson:
+    property-naming-strategy: SNAKE_CASE # 요청과 응답을 snake_case 로 받는다
+  cloud:
+    gateway:
+      routes:
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/orders/**
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/products/**
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+      discovery:
+        locator:
+          enabled: true  # 서비스 디스커버리를 통해 동적으로 라우트를 생성하도록 설정
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:19090/eureka/  # Eureka 서버의 URL을 지정
+
+service:
+  jwt:
+    access-expiration: 3600000
+    secret-key: "5905e1c15736e1526f9715a679bd4c9674533ed74324efd3478da4060550b8ca5154495e089e6f49fa064d98f22f880fdb59b7716e946254805f61f7f05e0c24"
+
