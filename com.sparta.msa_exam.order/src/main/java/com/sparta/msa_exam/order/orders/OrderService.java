@@ -11,6 +11,7 @@ import com.sparta.msa_exam.order.orders.dto.OrderResponse;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -73,6 +74,7 @@ public class OrderService {
         orderProductRepository.save(orderProduct);
     }
 
+    @Cacheable(cacheNames = "orderCache", key = "args[0]")
     @Transactional(readOnly = true)
     public OrderResponse getOrder(Long orderId) {
         return orderRepository.findById(orderId)
