@@ -1,0 +1,9 @@
+server:
+  port: ${EUREKA_SERVER_PORT}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL}
+  instance:
+    hostname: ${EUREKA_SERVER_HOST}

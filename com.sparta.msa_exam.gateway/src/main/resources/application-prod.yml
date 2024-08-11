@@ -1,0 +1,12 @@
+server:
+  port: ${GATEWAY_SERVER_PORT}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL}
+
+service:
+  jwt:
+    access-expiration: ${JWT_EXPIRATION}
+    secret-key: ${JWT_SECRET}

@@ -1,0 +1,28 @@
+spring:
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      username: ${REDIS_USERNAME}
+      password: ${REDIS_PASSWORD}
+  datasource:
+    url: ${ORDER_DB_URL}
+    username: ${ORDER_DB_USER_NAME}
+    password: ${ORDER_DB_USER_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL}
+server:
+  port: ${ORDER_SERVER_PORT}
+
+management:
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_API_ENDPOINT}
+  tracing:
+    sampling:
+      probability: 1.0
