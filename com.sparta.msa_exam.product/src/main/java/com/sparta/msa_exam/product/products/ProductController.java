@@ -20,7 +20,7 @@ public class ProductController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ProductResponse create(
-            @RequestHeader(value = "X-User_Id") String userId,
+            @RequestHeader(value = "X-User-Id") String userId,
                                   @RequestBody CreateProduct request) {
         return productService.createProduct(request);
     }
