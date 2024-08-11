@@ -11,8 +11,9 @@
 ---
 
 ## 실행
-git clone 후 `server` folder 열기
-- .idea 가 포함되어 있으므로 다른 프로젝트와 gradle 링크됨
+- MySql 은 로컬로 실행 (필요하다면 server 패키지의 docker-compose.yml 에 추가)
+- git clone 후 `server` folder 열기
+  - .idea 가 포함되어 있으므로 다른 프로젝트와 gradle 링크됨
 > intellij 의 서비스탭에 모든 서비스가 뜨지 않을 경우 gradle relaod 해주면 해결됨.
 
 
