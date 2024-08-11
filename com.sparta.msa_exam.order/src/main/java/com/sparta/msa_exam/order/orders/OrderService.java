@@ -60,7 +60,6 @@ public class OrderService {
 
         orderProductRepository.saveAll(orderProducts);
     }
-
     @Transactional
     public void updateOrder(AddProductToOrder request, Long orderId) {
         var order = orderRepository.findById(orderId).orElseThrow(
@@ -74,6 +73,8 @@ public class OrderService {
         orderProductRepository.save(orderProduct);
     }
 
+    // 요구 사항에 맞게 60초 동안은 캐시 데이터 조회
+    // Create , Put 에는 캐싱을 적용하지 않았으므로 60초 뒤에 변경된 데이터가 조회됨을 알 수 있다.
     @Cacheable(cacheNames = "orderCache", key = "args[0]")
     @Transactional(readOnly = true)
     public OrderResponse getOrder(Long orderId) {
@@ -81,4 +82,5 @@ public class OrderService {
                 .map(OrderResponse::from)
                 .orElseThrow(() -> new EntityNotFoundException("주문 정보가 없습니다. ID : " + orderId));
     }
+
 }
